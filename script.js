@@ -30,11 +30,27 @@ b_edit.addEventListener('click', event => {
 
 
 // 4 - si on clique sur le bouton "Edit" de la deuxième card, le texte de la card va se mettre en vert. Si on re-clique dessus, il redevient comme avant 
+// 
+
 
 const c_edit = document.getElementById('c_edit');
 
 s_card = document.getElementById('s_card');
 
 c_edit.addEventListener('click', event => {
-    s_card.style.color = "green";
+    if (s_card.style.color == "green") {
+        s_card.style.color = "black"
+    } else {
+        s_card.style.color = "green"
+    }
 });
+
+
+// function change_color () {
+//    var s_card = document.getElementById('s_card');
+//    if (s_card.style.display = "green") {
+//        s_card.display = "black"
+//    } else {
+//        s_card.style.display = "black";
+//    }
+// }
