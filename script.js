@@ -3,19 +3,26 @@
 
 const footer = document.querySelector('footer');
 
+let clic_count = 1;
+
 footer.addEventListener('click', event => {
-    console.log(`clique ${event.detail}`);
+    console.log(`clique ${clic_count}`);
+    clic_count = clic_count + 1;
 });
 
 
-// 2 - clique sur le bouton, l'élément HTML portant l'Id navbarHeader perde sa classe collapse. 
+
+// 2 - !!! - Clique sur le bouton, l'élément HTML portant l'Id navbarHeader perde sa classe collapse. 
 // si on clique à nouveau dessus, la classe collapse soit rajoutée à nouveau à l'élément portant l'Id navbarHeader
 
+let navToggler = document.querySelector("button.navbar-toggler");
 
-// function hamburger() {
-//     var element = document.getElementById("myDIV");
-//     element.classList.toggle("mystyle");
-// };
+let navHeader = document.querySelector("#navbarHeader");
+
+
+navToggler.addEventListener("click", function(){
+    navHeader.classList.toggle("collapse")
+});
 
 
 // 3 - si on clique sur le bouton "Edit" de la première card, le texte de la card va se mettre en rouge de façon irréversible 
@@ -30,7 +37,6 @@ b_edit.addEventListener('click', event => {
 
 
 // 4 - si on clique sur le bouton "Edit" de la deuxième card, le texte de la card va se mettre en vert. Si on re-clique dessus, il redevient comme avant 
-// 
 
 
 const c_edit = document.getElementById('c_edit');
@@ -45,12 +51,17 @@ c_edit.addEventListener('click', event => {
     }
 });
 
+// 5 - !!! - si un utilisateur double clique sur la navbar en haut, tout Bootstrap disparaît et la page s'affiche comme si on avait oublié de mettre le CDN
 
-// function change_color () {
-//    var s_card = document.getElementById('s_card');
-//    if (s_card.style.display = "green") {
-//        s_card.display = "black"
-//    } else {
-//        s_card.style.display = "black";
-//    }
-// }
+let styles = document.styleSheets;
+
+let nav_bar = document.querySelector(".navbar")
+
+nav_bar.addEventListener('dblclick', function(){
+    if (styles[0].disabled){
+        styles[0].disabled = false;
+    } else {
+        styles[0].disabled = true;
+    }
+});
+
